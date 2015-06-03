@@ -16,21 +16,31 @@ def getAttack(card):
     return " " + str(card["attack"])
 
 def getHealth(card):
-    if card.get("health") is not None :
-        return "/" + str(card["health"])
-    if card.get("durability") is not None :
-        return "/" + str(card["durability"])
+    hp = card.get("health")
+    if  hp is not None :
+        return "/" + str(hp)
+    durability = card.get("durability")
+    if durability is not None :
+        return "/" + str(durability)
     return ""
 
 
 def getFistLines(card) :
-    return card["name"] + " \n" + getRarity(card) + " " + getClass(card) + " card \n"
+    return "**" + card["name"] + "**" + " \n" + getRarity(card) + " " + getClass(card) + " card \n"
 
 def getSecondLines(card) :
     return str(card["cost"]) + " mana" + getAttack(card) + getHealth(card) + " " + card["type"]+ " \n"
 
+def getText(card) :
+    text = card.get("text")
+    if text is None :
+       return ""
+    return text.replace("<b>", "**").replace("</b>", "**")
+
+
+
 def cardPrinter(card) :
-    return getFistLines(card) + getSecondLines(card) + card["text"] + " \n"
+    return getFistLines(card) + getSecondLines(card) + getText(card) + " \n"
 
 
 

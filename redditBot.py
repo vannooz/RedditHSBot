@@ -3,9 +3,9 @@ from pprint import pprint
 from PrettyCardText import PrettyCardText
 import praw
 
-def RedditBot
+
 reddit = praw.Reddit(user_agent = "testuseragent")
-submissions = reddit.get_subreddit('hearthstone').get_new(limit=10)
+submissions = reddit.get_subreddit('vannooz').get_new(limit=10)
 for submission in submissions:
     #pprint(vars(submission))
     print submission.title
