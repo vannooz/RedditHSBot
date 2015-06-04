@@ -1,1 +1,1 @@
-python redditBot.py
+web: python redditBot.py
