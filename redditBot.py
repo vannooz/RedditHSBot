@@ -5,13 +5,14 @@ import praw
 
 
 reddit = praw.Reddit(user_agent = "testuseragent")
-submissions = reddit.get_subreddit('vannooz').get_new(limit=10)
+submissions = reddit.get_subreddit('hearthstone').get_new(limit=10)
 for submission in submissions:
     #pprint(vars(submission))
     print submission.title
     print "\n\n\n"
 
 hsDict = HearthstoneDictionary("AllSets.enUS.json")
+pprint(hsDict)
     #while True:
     #card = raw_input("Enter the card name (quit to exit):");
     #if(card == "quit"):
