@@ -7,8 +7,8 @@ import os
 
 reddit = praw.Reddit(user_agent = "testuseragent")
 login = os.environ.get('REDDIT_LOGIN')
-pass = os.environ.get('REDDIT_PASSWORD')
-reddit.login(login,pass)
+passw = os.environ.get('REDDIT_PASSWORD')
+reddit.login(login,passw)
 submissions = reddit.get_subreddit('hsnoobot').get_new(limit=10)
 
 for submission in submissions:
