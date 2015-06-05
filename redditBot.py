@@ -5,23 +5,28 @@ import praw
 import os
 
 
+def getEnv(name) :
+    value = os.environ.get(name)
+    if value is None:
+        value = raw_input(name+" ")
+    return value
+
 reddit = praw.Reddit(user_agent = "testuseragent")
-login = os.environ.get('REDDIT_LOGIN')
-passw = os.environ.get('REDDIT_PASSWORD')
+login = getEnv('REDDIT_LOGIN')
+passw = getEnv('REDDIT_PASSWORD')
 reddit.login(login,passw)
-submissions = reddit.get_subreddit('hsnoobot').get_new(limit=10)
 
-for submission in submissions:
-    #pprint(vars(submission))
-    print submission.title
+
+
+class redditBot :
+    def __init__(self):
+        pass
+
+    def getLatestPosts(self):
+        return reddit.get_subreddit('hsnoobot').get_new(limit=10)
+
+for submission in redditBot().getLatestPosts():
+    pprint(vars(submission))
+#    print submission.title
     print "\n\n\n"
-
-hsDict = HearthstoneDictionary("AllSets.enUS.json")
-pprint(hsDict)
-    #while True:
-    #card = raw_input("Enter the card name (quit to exit):");
-    #if(card == "quit"):
-    #    break
-#print(PrettyCardText().getPrettyText(hsDict.getCard(card)))
-
 
