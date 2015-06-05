@@ -2,10 +2,15 @@ from HSDictionary import HearthstoneDictionary
 from pprint import pprint
 from PrettyCardText import PrettyCardText
 import praw
+import os
 
 
 reddit = praw.Reddit(user_agent = "testuseragent")
-submissions = reddit.get_subreddit('hearthstone').get_new(limit=10)
+login = os.environ.get('REDDIT_LOGIN')
+pass = os.environ.get('REDDIT_PASSWORD')
+reddit.login(login,pass)
+submissions = reddit.get_subreddit('hsnoobot').get_new(limit=10)
+
 for submission in submissions:
     #pprint(vars(submission))
     print submission.title
@@ -18,3 +23,5 @@ pprint(hsDict)
     #if(card == "quit"):
     #    break
 #print(PrettyCardText().getPrettyText(hsDict.getCard(card)))
+
+
