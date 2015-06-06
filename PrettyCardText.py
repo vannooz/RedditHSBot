@@ -1,5 +1,7 @@
 def getRarity(card):
-    rarity = card["rarity"]
+    rarity = card.get("rarity")
+    if rarity is None:
+        return ""
     if rarity == "Free" :
         return "Basic"
     return rarity

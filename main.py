@@ -8,22 +8,26 @@ hsDict = HearthstoneDictionary("AllSets.enUS.json")
 latestTimeStamp = 0.0
 redditBot = RedditBot()
 while True:
-    newLatestTimestamp = latestTimeStamp
-    for submission in redditBot.getLatestPosts():
-        cards = []
-        submissionCreated = submission.created
-        if submissionCreated <= latestTimeStamp :
-            continue
-        if submissionCreated > newLatestTimestamp:
-            newLatestTimestamp = submissionCreated
+    try:
+        newLatestTimestamp = latestTimeStamp
+        for submission in redditBot.getLatestPosts():
+            try:
+                cards = []
+                submissionCreated = submission.created
+                if submissionCreated <= latestTimeStamp :
+                    continue
+                if submissionCreated > newLatestTimestamp:
+                    newLatestTimestamp = submissionCreated
 
-        for key in hsDict.keys() :
-            if key in submission.title.lower() or key in submission.selftext.lower():
-                cards.append(hsDict.getCard(key))
-        if cards:
-           #redditBot.postComment(submission, PrettyCardText().getPrettyPost(cards))
-            print PrettyCardText().getPrettyPost(cards)
-    latestTimeStamp = newLatestTimestamp
-    print latestTimeStamp
-    sleep(5)
+                for key in hsDict.keys() :
+                    if key in submission.title.lower() or key in submission.selftext.lower():
+                        cards.append(hsDict.getCard(key))
+                if cards:
+                    redditBot.postComment(submission, PrettyCardText().getPrettyPost(cards))
+            except:
+                print "error Processing submission latestTimestamp " + latestTimeStamp + " newtimestamp " + newLatestTimestamp + "\n submission " + submission.title
+        latestTimeStamp = newLatestTimestamp
+    except:
+        print "error in processing batch latest timestamp " + latestTimeStamp
+    sleep(5) #sleep 15 mins
 
