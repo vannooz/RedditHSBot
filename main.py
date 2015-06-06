@@ -30,5 +30,5 @@ while True:
         latestTimeStamp = newLatestTimestamp
     except:
         print "error in processing batch latest timestamp " + latestTimeStamp
-    sleep(5) #sleep 15 mins
+    sleep(15 * 60) #sleep 15 mins
 

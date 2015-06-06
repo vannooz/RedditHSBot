@@ -27,7 +27,7 @@ def getHealth(card):
     return ""
 
 NEW_LINE = '  \n'
-DISCLAIMER = '^(Created by a BOT to help new players. Reply for suggestions/comments)' + NEW_LINE + "^(Trial run)" + NEW_LINE
+DISCLAIMER = '^(Created by a BOT to help new players. Reply for suggestions/comments)' + NEW_LINE + "^(12 hour Trial run)" + NEW_LINE
 
 def getFistLines(card) :
     return "**" + card["name"] + "**" + NEW_LINE + getRarity(card) + " " + getClass(card) + " card" + NEW_LINE
@@ -61,7 +61,7 @@ class PrettyCardText:
         for card in cards:
             post = post + self.getPrettyText(card);
             post = post + NEW_LINE + '----------------------------------------------' + NEW_LINE
-            print "card done" + card["name"]
+            print "card done " + card["name"]
 
         post = post + DISCLAIMER
         return post

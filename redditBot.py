@@ -23,7 +23,7 @@ class RedditBot :
         pass
 
     def getLatestPosts(self):
-        return reddit.get_subreddit('hsnoobot').get_new(limit=10)
+        return reddit.get_subreddit('hearthstone').get_new(limit=10)
 
     def postComment(self, submission, content):
         submission.add_comment(content)
