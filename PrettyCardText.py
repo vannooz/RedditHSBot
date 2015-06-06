@@ -61,6 +61,7 @@ class PrettyCardText:
         for card in cards:
             post = post + self.getPrettyText(card);
             post = post + NEW_LINE + '----------------------------------------------' + NEW_LINE
+            print "card done" + card["name"]
 
         post = post + DISCLAIMER
         return post

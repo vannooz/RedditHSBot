@@ -24,6 +24,7 @@ while True:
                         cards.append(hsDict.getCard(key))
                 if cards:
                     redditBot.postComment(submission, PrettyCardText().getPrettyPost(cards))
+                    print "submission done"
             except:
                 print "error Processing submission latestTimestamp " + latestTimeStamp + " newtimestamp " + newLatestTimestamp + "\n submission " + submission.title
         latestTimeStamp = newLatestTimestamp
