@@ -24,12 +24,14 @@ def getHealth(card):
         return "/" + str(durability)
     return ""
 
+NEW_LINE = '  \n'
+DISCLAIMER = '^(Created by a BOT to help new players. Reply for suggestions/comments)' + NEW_LINE + "^(Trial run)" + NEW_LINE
 
 def getFistLines(card) :
-    return "**" + card["name"] + "**" + " \n" + getRarity(card) + " " + getClass(card) + " card \n"
+    return "**" + card["name"] + "**" + NEW_LINE + getRarity(card) + " " + getClass(card) + " card" + NEW_LINE
 
 def getSecondLines(card) :
-    return str(card["cost"]) + " mana" + getAttack(card) + getHealth(card) + " " + card["type"]+ " \n"
+    return str(card["cost"]) + " mana" + getAttack(card) + getHealth(card) + " " + card["type"]+ NEW_LINE
 
 def getText(card) :
     text = card.get("text")
@@ -50,5 +52,16 @@ class PrettyCardText:
 
     def getPrettyText(self, card):
         return cardPrinter(card)
+
+    def getPrettyPost(self, cards):
+        post = ''
+
+        for card in cards:
+            post = post + self.getPrettyText(card);
+            post = post + NEW_LINE + '----------------------------------------------' + NEW_LINE
+
+        post = post + DISCLAIMER
+        return post
+
 
 

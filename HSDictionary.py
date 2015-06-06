@@ -21,3 +21,6 @@ class HearthstoneDictionary:
                     index[card["name"].lower()] = card
         return index
 
+    def keys(self):
+        return self.index.keys()
+

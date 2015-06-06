@@ -18,15 +18,18 @@ reddit.login(login,passw)
 
 
 
-class redditBot :
+class RedditBot :
     def __init__(self):
         pass
 
     def getLatestPosts(self):
         return reddit.get_subreddit('hsnoobot').get_new(limit=10)
 
-for submission in redditBot().getLatestPosts():
-    pprint(vars(submission))
+    def postComment(self, submission, content):
+        submission.add_comment(content)
+
+#for submission in redditBot().getLatestPosts():
+#   pprint(vars(submission))
 #    print submission.title
-    print "\n\n\n"
+#    print "\n\n\n"
 
