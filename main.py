@@ -23,12 +23,13 @@ while True:
                     if key in submission.title.lower() or key in submission.selftext.lower():
                         cards.append(hsDict.getCard(key))
                 if cards:
-                    redditBot.postComment(submission, PrettyCardText().getPrettyPost(cards))
+                    print PrettyCardText().getPrettyPost(cards)
+                    #redditBot.postComment(submission, PrettyCardText().getPrettyPost(cards))
                     print "submission done"
             except:
-                print "error Processing submission latestTimestamp " + latestTimeStamp + " newtimestamp " + newLatestTimestamp + "\n submission " + submission.title
+                print "error Processing submission latestTimestamp " + str(latestTimeStamp) + " newtimestamp " + str(newLatestTimestamp) + "\n submission " + submission.title
         latestTimeStamp = newLatestTimestamp
     except:
-        print "error in processing batch latest timestamp " + latestTimeStamp
+        print "error in processing batch latest timestamp " + str(latestTimeStamp)
     sleep(15 * 60) #sleep 15 mins
 
