@@ -1,7 +1,8 @@
 import json
 from pprint import pprint
 
-supportedTypes = ("Minion", "Spell", "Weapon", "Secret")
+supportedTypes = ("Minion", "Spell", "Weapon")
+unsupportedCards = ("bite","sap","brawl","slam","snipe","claw") #unsupported cards as they are or are subsets of common words
 
 class HearthstoneDictionary:
     def __init__(self, filePath) :
@@ -18,9 +19,10 @@ class HearthstoneDictionary:
         for cartType in data.iterkeys():
             for card in data[cartType]:
                 if card["type"] in supportedTypes :
-                    index[card["name"].lower()] = card
+                    key = card["name"].lower()
+                    if key not in unsupportedCards:
+                        index[key] = card
         return index
 
     def keys(self):
         return self.index.keys()
-
